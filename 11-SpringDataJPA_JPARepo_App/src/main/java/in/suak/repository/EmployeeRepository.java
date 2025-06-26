@@ -16,15 +16,27 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 	@Modifying
 	@Transactional
-	@Query(value = "insert into emp_tbl (depart, emp_gender, emp_name, emp_salary, emp_id) " +
-			"values ('Manager','Male','MadhuKumar',12400.99,106)", nativeQuery = true)
+	@Query(value = "insert into emp_tbl (depart, emp_gender, emp_name, emp_salary, emp_id) "
+			+ "values ('Manager','Male','MadhuKumar',12400.99,106)", nativeQuery = true)
 	void insertData();
 
 	@Modifying
 	@Transactional
-	@Query(value = "insert into emp_tbl (depart, emp_gender, emp_name, emp_salary, emp_id) " +
-			"values ('Sales','Fe-Male','Rohit',10000.99,107)", nativeQuery = true)
+	@Query(value = "insert into emp_tbl (depart, emp_gender, emp_name, emp_salary, emp_id) "
+			+ "values ('Sales','Fe-Male','Rohit',10000.99,107)", nativeQuery = true)
 	void insertData2();
+
+	@Modifying
+	@Transactional
+	@Query(value = "insert into emp_tbl (depart, emp_gender, emp_name, emp_salary, emp_id) "
+			+ "values ('Data Analyst','Male','Sarath',5000.99,108)", nativeQuery = true)
+	void insertData3();
+
+	@Modifying
+	@Transactional
+	@Query(value = "insert into emp_tbl (depart, emp_gender, emp_name, emp_salary, emp_id) "
+			+ "values ('Data Scientist','Male','Sampreet',4999.99,109)", nativeQuery = true)
+	void insertData4();
 
 	@Modifying
 	@Transactional
@@ -32,16 +44,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	void updateData();
 
 	boolean existsByEmpSalary(Double empSalary);
-	
-	/*
-	 * @Modifying
-	 * 
-	 * @Transactional
-	 */
+
+	@Modifying
+	@Transactional
 	@Query(value = "delete from emp_tbl where emp_salary < 5000", nativeQuery = true)
 	void deleteLowSalaries();
 
 	long countByEmpSalaryLessThan(Double amount);
 
-	
 }

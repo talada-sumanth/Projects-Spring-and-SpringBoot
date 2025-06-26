@@ -26,6 +26,7 @@ public class Application {
 		
 		EmployeeRepository repo = ctx.getBean(EmployeeRepository.class);
 		
+		Employee emp = new Employee(101, "Sumanth", 1200.99, "Male", "Associate Software");
 		Employee emp1 = new Employee(102, "Sai Harish", 1200.99, "Male", "Associate Software");
 		Employee emp2 = new Employee(103, "Praveen", 1200.99, "Male", "Senior Software");
 		Employee emp3 = new Employee(104, "Vamsi", 1200.99, "Male", "Graduate Software");
@@ -50,14 +51,26 @@ public class Application {
 			}else {
 				repo.insertData2();
 				System.out.println("Record Inserted......");
-					
+			}
+		if(repo.existsById(108)) {
+			System.out.println("to insert record already existed");
+			}else {
+				repo.insertData3();
+				System.out.println("Record Inserted......");
+			}
+		
+		if(repo.existsById(109)) {
+			System.out.println("to insert record already existed");
+			}else {
+				repo.insertData4();
+				System.out.println("Record Inserted......109");
 			}
 		
 		if (repo.existsByEmpSalary(20000.78)) {
 			repo.updateData();
 		    System.out.println("Salary updated");
 		} else {
-		    //repo.updateData(); // your native query method
+		    repo.updateData(); // your native query method
 		    System.out.println(" no Update performed.");
 		}
 		
